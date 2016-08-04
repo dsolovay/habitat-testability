@@ -1,0 +1,1 @@
+<%@Application Language='C#' Inherits="Sitecore.Habitat.Website.Global" Codebehind="Global.asax.cs" %>

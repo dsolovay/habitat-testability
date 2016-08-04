@@ -1,5 +1,6 @@
 ﻿namespace Sitecore.Feature.Navigation.Controllers
 {
+  using System;
   using System.Web.Mvc;
   using Sitecore.Feature.Navigation.Repositories;
   using Sitecore.Foundation.Alerts.Extensions;
@@ -11,9 +12,9 @@
   {
     private readonly INavigationRepository _navigationRepository;
 
-    public NavigationController() : this(new NavigationRepository(RenderingContext.Current.Rendering.Item))
-    {
-    }
+    //public NavigationController() : this(new NavigationRepository(RenderingContext.Current.Rendering.Item))
+    //{
+    //}
 
     public NavigationController(INavigationRepository navigationRepository)
     {
