@@ -40,19 +40,28 @@
       breadcrumbModel.Elements.ToList()[0].Should().Be(homeItem);
       breadcrumbModel.Elements.ToList()[1].Should().Be(childItem);
     }
+
+    [Theory, GlassNavData]
+    public void NavigationItem_RequiredFields_Present(NavigationItem navItem)
+    {
+      navItem.DividerBefore.Should();
+      navItem.Icon.Should().BeOfType<string>();
+    }
   }
 
   public class NavigationItem
   {
     public NavigationItem Parent { get; set; }
+    public bool DividerBefore { get; set; }
+    public object Icon { get; set; }
   }
 
   public class GlassNavDataAttribute : AutoDataAttribute
   {
-    public GlassNavDataAttribute(): base(new Fixture().Customize(new AutoNSubstituteCustomization()))
+    public GlassNavDataAttribute() : base(new Fixture().Customize(new AutoNSubstituteCustomization()))
     {
       this.Fixture.Freeze<ISitecoreContext>();
-      this.Fixture.Register(()=> this.Fixture.Build<NavigationItem>().Without(item => item.Parent).Create());
+      this.Fixture.Register(() => this.Fixture.Build<NavigationItem>().Without(item => item.Parent).Create());
       this.Fixture.Register(() => this.Fixture.Build<NavigationGlassController>().OmitAutoProperties().Create());
     }
   }
@@ -62,7 +71,7 @@
     public IEnumerable<NavigationItem> Elements { get; set; }
   }
 
-  public class NavigationGlassController: Controller
+  public class NavigationGlassController : Controller
   {
     private readonly ISitecoreContext context;
 
@@ -73,7 +82,7 @@
 
     public ViewResult GetBreadcrumb()
     {
-      var breadcrumbModel = new BreadcrumbModel() {Elements = GetBreadcrumbElements() };
+      var breadcrumbModel = new BreadcrumbModel() {Elements = GetBreadcrumbElements()};
       return View(breadcrumbModel);
     }
 
