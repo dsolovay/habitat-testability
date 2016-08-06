@@ -9,8 +9,6 @@
   using Ploeh.AutoFixture;
   using Ploeh.AutoFixture.AutoNSubstitute;
   using Ploeh.AutoFixture.Xunit2;
- 
-
   using Xunit;
 
   public class NavigationGlassControllerTests
@@ -24,7 +22,10 @@
       ViewResult result = sut.GetBreadcrumb();
 
       result.Should().NotBe(null);
-      (result.Model as BreadcrumbModel).Elements.Count().Should().Be(1);
+      var breadcrumbModel = result.Model as BreadcrumbModel;
+      breadcrumbModel.Elements.Count().Should().Be(1);
+      breadcrumbModel.Elements.First().Should().Be(homeItem);
+
 
     }
 
@@ -51,15 +52,22 @@
 
   public class NavigationGlassController: Controller
   {
+    private readonly ISitecoreContext context;
+
+    public NavigationGlassController(ISitecoreContext context)
+    {
+      this.context = context;
+    }
+
     public ViewResult GetBreadcrumb()
     {
       var breadcrumbModel = new BreadcrumbModel() {Elements = GetBreadcrumbElements() };
       return View(breadcrumbModel);
     }
 
-    private static List<NavigationItem> GetBreadcrumbElements()
+    private List<NavigationItem> GetBreadcrumbElements()
     {
-      return new List<NavigationItem> {new NavigationItem()};
+      return new List<NavigationItem> {this.context.GetHomeItem<NavigationItem>()};
     }
   }
 }
