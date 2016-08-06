@@ -206,6 +206,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.ContactFac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.Navigation.GlassDemo.Tests", "src\Feature\Navigation\glass.demo\Sitecore.Feature.Navigation.GlassDemo.Tests\Sitecore.Feature.Navigation.GlassDemo.Tests.csproj", "{D21BC49D-5375-47D3-9B23-8CDFFCB277ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.Navigation.GlassDemo", "src\Feature\Navigation\glass.demo\Sitecore.Feature.Navigation.GlassDemo\Sitecore.Feature.Navigation.GlassDemo.csproj", "{033A233C-2883-4F88-BB33-EC390D50FAD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -646,6 +648,14 @@ Global
 		{D21BC49D-5375-47D3-9B23-8CDFFCB277ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D21BC49D-5375-47D3-9B23-8CDFFCB277ED}.Release|x64.ActiveCfg = Release|Any CPU
 		{D21BC49D-5375-47D3-9B23-8CDFFCB277ED}.Release|x64.Build.0 = Release|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{033A233C-2883-4F88-BB33-EC390D50FAD5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -741,5 +751,6 @@ Global
 		{7610EC39-ACB8-4978-87B4-F3BAA385306F} = {FBD27E1F-5E74-4091-8FAA-20A39F8996DD}
 		{73D644B8-855F-44BD-861E-46B77713CA87} = {FBD27E1F-5E74-4091-8FAA-20A39F8996DD}
 		{D21BC49D-5375-47D3-9B23-8CDFFCB277ED} = {B9938A83-271F-4269-871B-A6DA15E476BD}
+		{033A233C-2883-4F88-BB33-EC390D50FAD5} = {B9938A83-271F-4269-871B-A6DA15E476BD}
 	EndGlobalSection
 EndGlobal
