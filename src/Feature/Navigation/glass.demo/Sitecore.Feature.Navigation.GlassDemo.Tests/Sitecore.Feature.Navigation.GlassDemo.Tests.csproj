@@ -77,18 +77,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GlassNavDataAttribute.cs" />
+    <Compile Include="NavigableTests.cs" />
+    <Compile Include="NavigationGlassControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\code\Sitecore.Feature.Navigation.csproj">
-      <Project>{16003E7F-0FAF-4DEE-B13D-DD327E965A98}</Project>
-      <Name>Sitecore.Feature.Navigation</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sitecore.Feature.Navigation.GlassDemo\Sitecore.Feature.Navigation.GlassDemo.csproj">
+      <Project>{033a233c-2883-4f88-bb33-ec390d50fad5}</Project>
+      <Name>Sitecore.Feature.Navigation.GlassDemo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

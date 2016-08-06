@@ -48,6 +48,16 @@
       <HintPath>..\..\..\..\..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Glass.Mapper, Version=4.1.2.67, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Glass.Mapper.Sc.4.1.2.67\lib\net45\Glass.Mapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glass.Mapper.Sc">
+      <HintPath>..\..\..\..\..\packages\Glass.Mapper.Sc.4.1.2.67\lib\81\Glass.Mapper.Sc.dll</HintPath>
+    </Reference>
+    <Reference Include="Glass.Mapper.Sc.Mvc">
+      <HintPath>..\..\..\..\..\packages\Glass.Mapper.Sc.4.1.2.67\lib\Mvc52\Glass.Mapper.Sc.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -139,6 +149,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\GlassMapperSc.cs" />
+    <Compile Include="App_Start\GlassMapperScCustom.cs" />
+    <Compile Include="Controllers\NavigationGlassController.cs" />
+    <Compile Include="Models\BreadcrumbModel.cs" />
+    <Compile Include="Models\Navigable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,12 +168,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="fonts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\z.Glass.Mapper.Sc.ViewRender.config.exclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.Start.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.CodeFirst.config.exclude" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
