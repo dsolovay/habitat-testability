@@ -4,6 +4,7 @@
   using System.Collections.Generic;
   using System.Linq;
   using FluentAssertions;
+  using FluentAssertions.Primitives;
   using Glass.Mapper.Sc;
   using NSubstitute;
   using Ploeh.AutoFixture;
@@ -44,8 +45,9 @@
     [Theory, GlassNavData]
     public void NavigationItem_RequiredFields_Present(NavigationItem navItem)
     {
-      navItem.DividerBefore.Should();
-      navItem.Icon.Should().BeOfType<string>();
+      navItem.DividerBefore.GetType().Should().Be<bool>("because this is a checkbox field");
+      navItem.Icon.GetType().Should().Be<string>("because this is used to store an icon css class");
+      navItem.Icon.Should().NotBeEmpty("because AutoFixure should popluate properties");
     }
   }
 
@@ -53,7 +55,7 @@
   {
     public NavigationItem Parent { get; set; }
     public bool DividerBefore { get; set; }
-    public object Icon { get; set; }
+    public string Icon { get; set; }
   }
 
   public class GlassNavDataAttribute : AutoDataAttribute
