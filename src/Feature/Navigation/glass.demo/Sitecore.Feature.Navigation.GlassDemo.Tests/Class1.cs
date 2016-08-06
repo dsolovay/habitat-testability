@@ -21,20 +21,29 @@
 
       ViewResult result = sut.GetBreadcrumb();
 
-      result.Should().NotBe(null);
       var breadcrumbModel = result.Model as BreadcrumbModel;
       breadcrumbModel.Elements.Count().Should().Be(1);
       breadcrumbModel.Elements.First().Should().Be(homeItem);
-
-
     }
 
-    
+    [Theory, GlassNavData]
+    public void GetBreadcrumb_ChildOfHome_ReturnsHomeThenChild(NavigationGlassController sut, ISitecoreContext context, NavigationItem homeItem, NavigationItem childItem)
+    {
+      context.GetHomeItem<NavigationItem>().Returns(homeItem);
+      context.GetCurrentItem<NavigationItem>().Returns(childItem);
+
+      ViewResult result = sut.GetBreadcrumb();
+
+      var breadcrumbModel = result.Model as BreadcrumbModel;
+      breadcrumbModel.Elements.Count().Should().Be(2);
+      breadcrumbModel.Elements.ToList()[0].Should().Be(homeItem);
+      breadcrumbModel.Elements.ToList()[1].Should().Be(childItem);
+    }
   }
 
   public class NavigationItem
   {
-    
+    public NavigationItem Parent { get; set; }
   }
 
   public class GlassNavDataAttribute : AutoDataAttribute
@@ -68,7 +77,17 @@
 
     private List<NavigationItem> GetBreadcrumbElements()
     {
-      return new List<NavigationItem> {this.context.GetHomeItem<NavigationItem>()};
+      List<NavigationItem> items = new List<NavigationItem>();
+      NavigationItem current = this.context.GetCurrentItem<NavigationItem>();
+      NavigationItem home = this.context.GetHomeItem<NavigationItem>();
+      while (current != home)
+      {
+        items.Add(current);
+        current = current.Parent;
+      }
+      items.Add(home);
+      items.Reverse();
+      return items;
     }
   }
 }
