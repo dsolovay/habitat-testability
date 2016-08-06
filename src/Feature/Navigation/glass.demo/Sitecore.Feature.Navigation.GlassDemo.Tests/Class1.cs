@@ -31,6 +31,7 @@
     {
       context.GetHomeItem<NavigationItem>().Returns(homeItem);
       context.GetCurrentItem<NavigationItem>().Returns(childItem);
+      childItem.Parent = homeItem;
 
       ViewResult result = sut.GetBreadcrumb();
 
@@ -51,6 +52,7 @@
     public GlassNavDataAttribute(): base(new Fixture().Customize(new AutoNSubstituteCustomization()))
     {
       this.Fixture.Freeze<ISitecoreContext>();
+      this.Fixture.Register(()=> this.Fixture.Build<NavigationItem>().Without(item => item.Parent).Create());
       this.Fixture.Register(() => this.Fixture.Build<NavigationGlassController>().OmitAutoProperties().Create());
     }
   }
