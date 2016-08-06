@@ -15,10 +15,10 @@
   public class NavigationGlassControllerTests
   {
     [Theory, GlassNavData]
-    public void GetBreadcrumb_HomeItem_ReturnsOneItem(NavigationGlassController sut, ISitecoreContext context, NavigationItem homeItem)
+    public void GetBreadcrumb_HomeItem_ReturnsOneItem(NavigationGlassController sut, ISitecoreContext context, Navigable homeItem)
     {
-      context.GetHomeItem<NavigationItem>().Returns(homeItem);
-      context.GetCurrentItem<NavigationItem>().Returns(homeItem);
+      context.GetHomeItem<Navigable>().Returns(homeItem);
+      context.GetCurrentItem<Navigable>().Returns(homeItem);
 
       ViewResult result = sut.GetBreadcrumb();
 
@@ -28,10 +28,10 @@
     }
 
     [Theory, GlassNavData]
-    public void GetBreadcrumb_ChildOfHome_ReturnsHomeThenChild(NavigationGlassController sut, ISitecoreContext context, NavigationItem homeItem, NavigationItem childItem)
+    public void GetBreadcrumb_ChildOfHome_ReturnsHomeThenChild(NavigationGlassController sut, ISitecoreContext context, Navigable homeItem, Navigable childItem)
     {
-      context.GetHomeItem<NavigationItem>().Returns(homeItem);
-      context.GetCurrentItem<NavigationItem>().Returns(childItem);
+      context.GetHomeItem<Navigable>().Returns(homeItem);
+      context.GetCurrentItem<Navigable>().Returns(childItem);
       childItem.Parent = homeItem;
 
       ViewResult result = sut.GetBreadcrumb();
@@ -43,19 +43,20 @@
     }
 
     [Theory, GlassNavData]
-    public void NavigationItem_RequiredFields_Present(NavigationItem navItem)
+    public void NavigationItem_RequiredFields_Present(Navigable navItem)
     {
-      navItem.DividerBefore.GetType().Should().Be<bool>("because this is a checkbox field");
-      navItem.Icon.GetType().Should().Be<string>("because this is used to store an icon css class");
-      navItem.Icon.Should().NotBeEmpty("because AutoFixure should popluate properties");
+      navItem.Url.GetType().Should().Be<string>("because this stores the link");
+      navItem.IsActive.GetType().Should().Be<bool>("because this toggles a CSS class");
+      navItem.NavigationTitle.GetType().Should().Be<string>("because this is rendered text");
     }
   }
 
-  public class NavigationItem
+  public class Navigable
   {
-    public NavigationItem Parent { get; set; }
-    public bool DividerBefore { get; set; }
-    public string Icon { get; set; }
+    public Navigable Parent { get; set; }
+    public string Url { get; set; }
+    public bool IsActive { get; set; }
+    public string NavigationTitle { get; set; }
   }
 
   public class GlassNavDataAttribute : AutoDataAttribute
@@ -63,14 +64,14 @@
     public GlassNavDataAttribute() : base(new Fixture().Customize(new AutoNSubstituteCustomization()))
     {
       this.Fixture.Freeze<ISitecoreContext>();
-      this.Fixture.Register(() => this.Fixture.Build<NavigationItem>().Without(item => item.Parent).Create());
+      this.Fixture.Register(() => this.Fixture.Build<Navigable>().Without(item => item.Parent).Create());
       this.Fixture.Register(() => this.Fixture.Build<NavigationGlassController>().OmitAutoProperties().Create());
     }
   }
 
   public class BreadcrumbModel
   {
-    public IEnumerable<NavigationItem> Elements { get; set; }
+    public IEnumerable<Navigable> Elements { get; set; }
   }
 
   public class NavigationGlassController : Controller
@@ -88,11 +89,11 @@
       return View(breadcrumbModel);
     }
 
-    private List<NavigationItem> GetBreadcrumbElements()
+    private List<Navigable> GetBreadcrumbElements()
     {
-      List<NavigationItem> items = new List<NavigationItem>();
-      NavigationItem current = this.context.GetCurrentItem<NavigationItem>();
-      NavigationItem home = this.context.GetHomeItem<NavigationItem>();
+      List<Navigable> items = new List<Navigable>();
+      Navigable current = this.context.GetCurrentItem<Navigable>();
+      Navigable home = this.context.GetHomeItem<Navigable>();
       while (current != home)
       {
         items.Add(current);
