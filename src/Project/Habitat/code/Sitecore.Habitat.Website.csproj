@@ -236,6 +236,10 @@
       <Project>{16003E7F-0FAF-4DEE-B13D-DD327E965A98}</Project>
       <Name>Sitecore.Feature.Navigation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Feature\Navigation\glass.demo\Sitecore.Feature.Navigation.GlassDemo\Sitecore.Feature.Navigation.GlassDemo.csproj">
+      <Project>{033a233c-2883-4f88-bb33-ec390d50fad5}</Project>
+      <Name>Sitecore.Feature.Navigation.GlassDemo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\foundation\Assets\code\Sitecore.Foundation.Assets.csproj">
       <Project>{7E46FF93-EE05-412C-AC47-2A59A13DA73C}</Project>
       <Name>Sitecore.Foundation.Assets</Name>

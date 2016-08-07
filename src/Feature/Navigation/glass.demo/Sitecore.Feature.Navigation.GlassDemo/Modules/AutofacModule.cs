@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Sitecore.Feature.Navigation.GlassDemo.Modules
+﻿namespace Sitecore.Feature.Navigation.GlassDemo.Modules
 {
   using Autofac;
   using Autofac.Integration.Mvc;

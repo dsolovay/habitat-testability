@@ -13,8 +13,12 @@
     public GlassNavDataAttribute() : base(new Fixture().Customize(new AutoNSubstituteCustomization()))
     {
       this.Fixture.Freeze<ISitecoreContext>();
-      this.Fixture.Register(() => this.Fixture.Build<Navigable>().Without(item => item.Parent).Create());
+      this.Fixture.Register(() => this.Fixture.Build<Navigable>()
+        .Without(item => item.Parent)
+        .Without(navigable => navigable.IsActive)
+        .Create());
       this.Fixture.Register(() => this.Fixture.Build<NavigationGlassController>().OmitAutoProperties().Create());
+ 
     }
   }
 }

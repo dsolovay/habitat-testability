@@ -1,6 +1,7 @@
 namespace Sitecore.Feature.Navigation.GlassDemo.Tests
 {
   using System;
+  using System.Linq;
   using System.Reflection;
   using FluentAssertions;
   using Sitecore.Feature.Navigation.GlassDemo.Models;
@@ -16,9 +17,12 @@ namespace Sitecore.Feature.Navigation.GlassDemo.Tests
       navItem.NavigationTitle.GetType().Should().Be<string>("because this is rendered text");
       navItem.Id.GetType().Should().Be<Guid>();
 
-      PropertyInfo property = typeof(Navigable).GetProperty("Parent");
-      property.Should().BeVirtual("because Glass requires this so it can use lazy loading and avoid infinite recursion");
+      Type type = typeof(Navigable);
+      PropertyInfo property = type.GetProperty("Parent");
       property.PropertyType.Should().Be<Navigable>("because we need to crawl up the tree");
+
+      type.GetProperties().ToList().ForEach(p=>p.Should().BeVirtual("because they need to be populated on the parent, which is a proxy"));
+ 
     }
   }
 }

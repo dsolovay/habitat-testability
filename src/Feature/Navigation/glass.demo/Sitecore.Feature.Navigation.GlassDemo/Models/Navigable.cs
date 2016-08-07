@@ -5,11 +5,10 @@ namespace Sitecore.Feature.Navigation.GlassDemo.Models
 
   public class Navigable
   {
-    [SitecoreParent]
+    public virtual Guid Id { get; set; }
     public virtual Navigable Parent { get; set; }
-    public string Url { get; set; }
-    public bool IsActive { get; set; }
-    public string NavigationTitle { get; set; }
-    public Guid Id { get; set; }
+    public virtual string Url { get; set; }
+    public virtual bool IsActive { get; set; }
+    public virtual string NavigationTitle { get; set; }
   }
 }

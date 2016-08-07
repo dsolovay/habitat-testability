@@ -14,7 +14,7 @@
       {
         if (Sitecore.Analytics.Tracker.Enabled)
         {
-          return Sitecore.Analytics.Tracker.Current.Contact;
+          return Sitecore.Analytics.Tracker.Current?.Contact;
         }
         return null;
       }).As<Contact>();

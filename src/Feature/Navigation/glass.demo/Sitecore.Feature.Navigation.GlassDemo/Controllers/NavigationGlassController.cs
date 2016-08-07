@@ -25,10 +25,18 @@ namespace Sitecore.Feature.Navigation.GlassDemo.Controllers
       List<Navigable> items = new List<Navigable>();
       Navigable current = this.context.GetCurrentItem<Navigable>();
       Navigable home = this.context.GetHomeItem<Navigable>();
-      while (current != home)
+      if (home == null || current == null)
       {
+        return items;
+      }
+
+      current.IsActive = true;
+      while (current.Id != home.Id)
+      {
+        
         items.Add(current);
         current = current.Parent;
+        
       }
       items.Add(home);
       items.Reverse();
