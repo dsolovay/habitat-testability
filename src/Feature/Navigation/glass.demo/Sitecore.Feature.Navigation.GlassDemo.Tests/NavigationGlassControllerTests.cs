@@ -38,5 +38,13 @@ namespace Sitecore.Feature.Navigation.GlassDemo.Tests
       breadcrumbModel.Elements.ToList()[0].Should().Be(homeItem);
       breadcrumbModel.Elements.ToList()[1].Should().Be(childItem);
     }
+
+    [Theory, GlassNavData]
+    public void Breadcrumb_Called_ReturnsBreadcrumbGlassView(NavigationGlassController sut)
+    {
+      ViewResult result = sut.GetBreadcrumb();
+
+      result.ViewName.Should().Be("BreadcrumbGlass", "because we don't want to overwrite the main breadcrumb view");
+    }
   }
 }

@@ -1,0 +1,13 @@
+﻿@model Sitecore.Feature.Navigation.GlassDemo.Models.BreadcrumbModel
+
+ <!-- BreadcrumbGlass.cshtml -->
+<div class="container">
+  <ol class="breadcrumb">
+    @foreach (var item in Model.Elements)
+    {
+      <li class="@(item.IsActive ? "active" : string.Empty)">
+        <a href="@item.Url()">@item.NavigationTitle</a>
+      </li>
+    }
+  </ol>
+</div>

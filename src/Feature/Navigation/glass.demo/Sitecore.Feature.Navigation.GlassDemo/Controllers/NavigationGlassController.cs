@@ -17,7 +17,7 @@ namespace Sitecore.Feature.Navigation.GlassDemo.Controllers
     public ViewResult GetBreadcrumb()
     {
       var breadcrumbModel = new BreadcrumbModel() {Elements = this.GetBreadcrumbElements()};
-      return this.View(breadcrumbModel);
+      return this.View("BreadcrumbGlass", breadcrumbModel);
     }
 
     private List<Navigable> GetBreadcrumbElements()
