@@ -1,5 +1,6 @@
 namespace Sitecore.Feature.ContactFacets.Controllers
 {
+  using System.Runtime.InteropServices;
   using System.Web.Mvc;
   using Sitecore.Analytics.Model.Entities;
   using Sitecore.Analytics.Tracking;
@@ -14,6 +15,7 @@ namespace Sitecore.Feature.ContactFacets.Controllers
       this.contact = contact;
     }
 
+    [HttpGet]
     public ActionResult Index()
     {
       ContactFacetModel model = new ContactFacetModel();
@@ -29,6 +31,14 @@ namespace Sitecore.Feature.ContactFacets.Controllers
       }
       return this.View("ContactFacetForm", model);
 
+    }
+
+    [HttpPost]
+    public ActionResult Index(ContactFacetModel model)
+    {
+      this.contact.GetFacet<IContactPersonalInfo>("Personal").FirstName = model.FirstName;
+      ViewBag.Success = true;
+      return this.View("ContactFacetForm", model);
     }
   }
 }

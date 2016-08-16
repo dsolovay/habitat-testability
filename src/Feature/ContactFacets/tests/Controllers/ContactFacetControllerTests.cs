@@ -70,38 +70,39 @@
       Assert.True(result.ViewBag.NoXDB);
     }
 
-    //[Fact]
-    //public void Index_PassedModel_UpdatesFacet()
-    //{
-    //  string expected = "first name";
-    //  ContactFacetModel model = new ContactFacetModel() { FirstName = expected };
+    [Fact]
+    public void Index_PassedModel_UpdatesFacet()
+    {
+      string expected = "first name";
+      ContactFacetModel model = new ContactFacetModel() { FirstName = expected };
 
-    //  _sut.Index(model);
+      _sut.Index(model);
 
-    //  this._substituteContact.GetFacet<IContactPersonalInfo>("Personal")
-    //    .Received().FirstName = expected;
-    //}
+      this._substituteContact.GetFacet<IContactPersonalInfo>("Personal")
+        .Received().FirstName = expected;
+    }
 
-    //[Fact]
-    //public void Index_PassedModel_ReturnsSuccess()
-    //{
+    [Fact]
+    public void Index_PassedModel_ReturnsSuccess()
+    {
 
-    //  ViewResult result = _sut.Index(new ContactFacetModel());
+      ViewResult result = _sut.Index(new ContactFacetModel()) as ViewResult;
 
-    //  Assert.True(result.ViewBag.Success);
-    //  Assert.Equal("ContactFacetForm", result.ViewName);
-    //}
+      Assert.True(result.ViewBag.Success);
+      
+      Assert.Equal("ContactFacetForm", result.ViewName);
+    }
 
-    //[Fact]
-    //public void Index_PassedModel_ReturnsIt()
-    //{
-    //  ContactFacetModel model = new ContactFacetModel();
+    [Fact]
+    public void Index_PassedModel_ReturnsIt()
+    {
+      ContactFacetModel model = new ContactFacetModel();
+      
+      ViewResult result = _sut.Index(model) as ViewResult;
 
-    //  ViewResult result = _sut.Index(model) as ViewResult;
-   
-    //  Assert.Equal(model, result.Model);
-    //}
+      Assert.Equal(model, result.Model);
+    }
 
 
-}
+  }
 }
