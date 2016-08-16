@@ -2,28 +2,29 @@
 {
   using System.Web.Mvc;
   using FluentAssertions;
+  using Sitecore.Feature.ContactFacets.Controllers;
   using Xunit;
 
   public class ContactFacetControllerTests
   {
 
-    //[Fact]
-    //public void New_Called_ReturnsController()
-    //{
+    [Fact]
+    public void New_Called_ReturnsController()
+    {
 
-    //  var sut = new ContactFacetController();
+      var sut = new ContactFacetController();
 
-    //  sut.Should().NotBeNull();
-    //}
+      sut.Should().NotBeNull();
+    }
 
-    //[Fact]
-    //public void Index__CalledWithNoParms_ReturnsView()
-    //{
-    //  var sut = new ContactFacetController();
+    [Fact]
+    public void Index__CalledWithNoParms_ReturnsView()
+    {
+      var sut = new ContactFacetController();
 
-    //  ActionResult result = sut.Index();
+      ActionResult result = sut.Index();
 
-    //  result.Should().BeOfType<ViewResult>();
-    //}
+      result.Should().BeOfType<ViewResult>();
+    }
   }
 }
