@@ -3,9 +3,9 @@
   using Ploeh.AutoFixture.AutoNSubstitute;
   using Ploeh.AutoFixture.Xunit2;
 
-  public class AutoSububstituteDataAttribute : AutoDataAttribute
+  public class AutoSubstituteDataAttribute : AutoDataAttribute
   {
-    public AutoSububstituteDataAttribute()
+    public AutoSubstituteDataAttribute()
     {
       this.Fixture.Customize(new AutoNSubstituteCustomization());
     }

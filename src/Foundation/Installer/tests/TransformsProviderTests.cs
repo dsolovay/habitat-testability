@@ -15,7 +15,7 @@
   public class TransformsProviderTests
   {
     [Theory]
-    [AutoSububstituteData]
+    [AutoSubstituteData]
     public void GetTransformsByLayer_ShouldReturnsTransformsList([Frozen]IFilePathResolver path, [Greedy]TransformProvider provider, string layerName, string transformFileName)
     {
       var constructorTest = new TransformProvider();
@@ -31,7 +31,7 @@
     }
 
     [Theory]
-    [AutoSububstituteData]
+    [AutoSubstituteData]
     public void GetTransformsByLayer_LayerFolderDoesNotExists_ShouldReturnsEmptyCollection([Frozen] IFilePathResolver path, [Greedy] TransformProvider provider, string layerName, string transformFileName)
     {
       var transformsPath = $"{Directory.GetCurrentDirectory()}\\temp\\transforms";
@@ -43,7 +43,7 @@
     }
 
     [Theory]
-    [AutoSububstituteData]
+    [AutoSubstituteData]
     public void GetTransformsByLayer_TransformsFolderDoesNotExists_ShouldReturnsEmptyCollection([Frozen] IFilePathResolver path, [Greedy] TransformProvider provider, string layerName, string transformFileName)
     {
       path.MapPath(Arg.Any<string>()).Returns(string.Empty);

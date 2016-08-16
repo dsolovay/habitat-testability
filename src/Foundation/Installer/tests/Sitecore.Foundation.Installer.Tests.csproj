@@ -152,7 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountsEnableActionTests.cs" />
-    <Compile Include="AutoSububstituteDataAttribute.cs" />
+    <Compile Include="AutoSubstituteDataAttribute.cs" />
     <Compile Include="MongoRestore\MongoRestoreProcessorTests.cs" />
     <Compile Include="MongoRestore\MongoRestoreServiceTests.cs" />
     <Compile Include="PostStepTests.cs" />

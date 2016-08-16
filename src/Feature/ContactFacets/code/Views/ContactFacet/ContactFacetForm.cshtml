@@ -1,15 +1,32 @@
-﻿@model Sitecore.Feature.ContactFacets.Models.ContactFacetModel
+﻿@using System
+@using Sitecore.Feature.ContactFacets.Models
+@using Sitecore.Marketing
+@using Stimulsoft.Report
+@model ContactFacetModel
 
 
 <h2>Personal Information</h2>
 
-@if (ViewBag.NoXDB)
-{
-  <h3>XDB not available</h3>
-}
-else
-{
-  @Html.LabelFor(model => model.FirstName);
-  @Html.TextBoxFor(model => model.FirstName);
+@{
+  if (ViewBag.NoXDB ?? false)
+  {
+    <div class="alert alert-danger" role="alert"><strong>Oh snap!</strong> The xDB is not available.</div>
+  }
+  else if (ViewBag.Success ?? false)
+  {
+    <div class="alert alert-success" role="alert">
+      <strong>Success!</strong> Your xDB contact has been updated.
+    </div>
+  }
+  else
+  {
 
+    <form method="post" class="form-horizontal dan">
+      <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  }
 }

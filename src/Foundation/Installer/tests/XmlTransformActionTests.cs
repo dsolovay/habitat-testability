@@ -9,7 +9,7 @@
   public class XmlTransformActionTests
   {
     [Theory]
-    [AutoSububstituteData]
+    [AutoSubstituteData]
     public void RunShouldCallXdtTransform(IXdtTransformEngine xdt, IFilePathResolver path, ITransformsProvider transform)
     {
       var postStep = new XmlTransformAction(xdt, path, transform);
@@ -22,7 +22,7 @@
 
 
     [Theory]
-    [AutoSububstituteData]
+    [AutoSubstituteData]
     public void RunShouldNotCallXdtTransformIfTransformFileIsMissing(IXdtTransformEngine xdt, IFilePathResolver path, ITransformsProvider transform)
     {
       path.MapPath(Arg.Any<string>()).Returns((string)null);
