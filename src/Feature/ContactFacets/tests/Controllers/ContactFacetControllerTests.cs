@@ -19,9 +19,9 @@
 
     public ContactFacetControllerTests()
     {
-       
+
       _substituteContact = Substitute.For<Contact>();
-      _sut = new ContactFacetController(/*_substituteContact*/);
+      _sut = new ContactFacetController(_substituteContact);
     }
 
     [Fact]
@@ -31,7 +31,7 @@
     }
 
     [Fact]
-    public void Index__CalledWithNoParms_ReturnsView()
+    public void Index_CalledWithNoParms_ReturnsView()
     {
 
       ActionResult result = _sut.Index();
@@ -39,36 +39,35 @@
       result.Should().BeOfType<ViewResult>();
     }
 
-    //[Fact]
-    //public void Index_NoParms_ReturnsCorrectView()
-    //{
-    //  ViewResult result = _sut.Index() as ViewResult;
+    [Fact]
+    public void Index_NoParms_ReturnsCorrectView()
+    {
+      ViewResult result = _sut.Index() as ViewResult;
 
-    //  Assert.Equal("ContactFacetForm", result.ViewName);
-    //}
+      Assert.Equal("ContactFacetForm", result.ViewName);
+    }
 
-    //[Fact]
-    //public void Index_ContactNotNull_PopulatesModel()
-    //{
-    //  string firstName = "first name";
-    //  this._substituteContact.GetFacet<IContactPersonalInfo>("Personal").FirstName.Returns(firstName);
+    [Fact]
+    public void Index_ContactNotNull_PopulatesModel()
+    {
+      string firstName = "first name";
+      this._substituteContact.GetFacet<IContactPersonalInfo>("Personal").FirstName.Returns(firstName);
 
-    //  ViewResult result = _sut.Index() as ViewResult;
+      ViewResult result = _sut.Index() as ViewResult;
 
-    //  ContactFacetModel model = result.Model as ContactFacetModel;
-    //  Assert.Equal(firstName, model.FirstName);
+      ContactFacetModel model = result.Model as ContactFacetModel;
+      Assert.Equal(firstName, model.FirstName);
 
-    //}
+    }
 
-    //[Fact]
-    //public void Index_ContactNull_SetsNoXDB()
-    //{
-    //  this._sut = new ContactFacetController(contact: null);
+    [Fact]
+    public void Index_ContactNull_SetsNoXdb()
+    {
+      this._sut = new ContactFacetController(contact: null);
 
-    //  ViewResult result = _sut.Index() as ViewResult;
+      ViewResult result = _sut.Index() as ViewResult;
 
-    //  Assert.True(result.ViewBag.NoXDB);
-    //}
-
+      Assert.True(result.ViewBag.NoXDB);
+    }
   }
 }
