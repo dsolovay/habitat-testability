@@ -1,0 +1,15 @@
+﻿@model Sitecore.Feature.ContactFacets.Models.ContactFacetModel
+
+
+<h2>Personal Information</h2>
+
+@if (ViewBag.NoXDB)
+{
+  <h3>XDB not available</h3>
+}
+else
+{
+  @Html.LabelFor(model => model.FirstName);
+  @Html.TextBoxFor(model => model.FirstName);
+
+}

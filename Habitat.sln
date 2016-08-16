@@ -202,7 +202,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.Demo", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.ContactFacets", "src\Feature\ContactFacets\code\Sitecore.Feature.ContactFacets.csproj", "{7610EC39-ACB8-4978-87B4-F3BAA385306F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.ContactFacets.Tests", "src\Feature\ContactFacets\tests\Sitecore.Feature.ContactFacets.Tests\Sitecore.Feature.ContactFacets.Tests.csproj", "{73D644B8-855F-44BD-861E-46B77713CA87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Feature.ContactFacets.Tests", "src\Feature\ContactFacets\tests\Sitecore.Feature.ContactFacets.Tests.csproj", "{73D644B8-855F-44BD-861E-46B77713CA87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
