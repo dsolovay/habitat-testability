@@ -1,4 +1,6 @@
-#Facet Testability and Glass Testability (based on [Sitecore Habitat](https://github.com/Sitecore/habitat))
+#Facet Testability and Glass Testability 
+
+Based on [Sitecore Habitat](https://github.com/Sitecore/habitat).
 
 Unit tests for facet logic are here: [ContactFacetControllerTests.cs](./src/Feature/ContactFacets/tests/Controllers/ContactFacetControllerTests.cs)
 
