@@ -1,10 +1,5 @@
-#Sitecore Habitat
+#Facet Testability and Glass Testability (based on [Sitecore Habitat](https://github.com/Sitecore/habitat))
 
-Habitat is a Sitecore solution example built on a modular architecture.
-The architecture and methodology focuses on:
+Unit tests for facet logic are here: [ContactFacetControllerTests.cs](./src/Feature/ContactFacets/tests/Controllers/ContactFacetControllerTests.cs)
 
-* Simplicity - *A consistent and discoverable architecture*
-* Flexibility - *Change and add quickly and without worry*
-* Extensibility - *Simply add new features without steep learning curve*
-
-For more information, please check out the [Habitat Wiki](../../wiki)
+Unit test for glass reimplementation of breadcrumb are here: [Sitecore.Feature.Navigation.GlassDemo.Tests](./src/Feature/Navigation/glass.demo/Sitecore.Feature.Navigation.GlassDemo.Tests)
